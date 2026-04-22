@@ -1,9 +1,9 @@
 ﻿@model List<Lab_2_DB.Models.KovotojoSportoSaliuIstorija>
 @{
-    ViewBag.Title = "Kovotojo sporto salių istorija";
+    ViewBag.Title = "Sportavimo istorija";
 }
 
-<h2>Kovotojo sporto salių istorija</h2>
+<h2>Sportavimo istorija</h2>
 <p><a class="btn btn-success" asp-action="Create">+ Pridėti įrašą</a></p>
 <table class="table">
     <thead>
@@ -27,7 +27,7 @@
             <td>@(i.KovotojoVardasPavarde ?? i.FkKovotojai.ToString())</td>
             <td>@(i.SportoSalesPavadinimas ?? i.FkKovinioSportoSales)</td>
             <td>@(i.NarystesTipoPavadinimas ?? i.NarystesTipas.ToString())</td>
-            <td>@(i.StatusoPavadinimas ?? i.Statusas?.ToString() ?? "â€”")</td>
+            <td>@(i.StatusoPavadinimas ?? i.Statusas?.ToString() ?? "—")</td>
             <td>@i.NarystesPradzia.ToString("yyyy-MM-dd")</td>
             <td>@i.NarystesPabaiga.ToString("yyyy-MM-dd")</td>
             <td><a asp-action="Edit" asp-route-id="@i.Id">Redaguoti</a> | <a asp-action="Delete" asp-route-id="@i.Id">Šalinti</a></td>
