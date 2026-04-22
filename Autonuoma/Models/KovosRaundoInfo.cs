@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Lab_2_DB.Models
 {
@@ -33,6 +34,9 @@ namespace Lab_2_DB.Models
         [Display(Name = "Kova")]
         [Required]
         public int FkKovosDuomenys { get; set; }
+
+        public IList<SelectListItem> RaundoPabaigosTipaiList { get; set; } = new List<SelectListItem>();
+        public IList<SelectListItem> KovosDuomenysList { get; set; } = new List<SelectListItem>();
     }
 }
 

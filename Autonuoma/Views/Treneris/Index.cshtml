@@ -1,0 +1,45 @@
+﻿@model List<Lab_2_DB.Models.Treneris>
+@{
+    ViewBag.Title = "Treneriai";
+}
+
+<h2>Treneriai</h2>
+
+<p><a class="btn btn-success" asp-action="Create">+ Pridėti naują trenerį</a></p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Vardas</th>
+            <th>Pavardė</th>
+            <th>Specializacija</th>
+            <th>Pareigos</th>
+            <th>Patirtis (m.)</th>
+            <th>Sporto salė</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count == 0)
+        {
+            <tr><td colspan="8"><em>Įrašų nėra.</em></td></tr>
+        }
+        @foreach (var t in Model)
+        {
+            <tr>
+                <td>@t.Id</td>
+                <td>@t.Vardas</td>
+                <td>@t.Pavarde</td>
+                <td>@t.Specializacija</td>
+                <td>@t.Pareigos</td>
+                <td>@t.PatirtisMetais</td>
+                <td>@t.FkKovinioSportoSale</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@t.Id">Redaguoti</a> |
+                    <a asp-action="Delete" asp-route-id="@t.Id">Šalinti</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

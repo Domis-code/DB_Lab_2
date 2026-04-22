@@ -1,0 +1,40 @@
+﻿@model Lab_2_DB.Models.Kovotojas
+@{
+    ViewBag.Title = "Redaguoti kovotoją";
+}
+
+<h2>Redaguoti kovotoją</h2>
+
+<form asp-action="Edit" asp-route-id="@Model.Id" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="Vardas"></label>
+        <input asp-for="Vardas" class="form-control" />
+        <span asp-validation-for="Vardas" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Pavarde"></label>
+        <input asp-for="Pavarde" class="form-control" />
+        <span asp-validation-for="Pavarde" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="GimimoData"></label>
+        <input asp-for="GimimoData" type="date" class="form-control" />
+        <span asp-validation-for="GimimoData" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="SvorisKg"></label>
+        <input asp-for="SvorisKg" type="number" step="0.01" class="form-control" />
+        <span asp-validation-for="SvorisKg" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="UgisCm"></label>
+        <input asp-for="UgisCm" type="number" class="form-control" />
+        <span asp-validation-for="UgisCm" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Išsaugoti</button>
+    <a class="btn btn-secondary" asp-action="Index">Atšaukti</a>
+</form>

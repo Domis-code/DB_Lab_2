@@ -1,0 +1,32 @@
+﻿@model Lab_2_DB.Models.Renginys
+@{
+    ViewBag.Title = "Šalinti renginį";
+    bool notPermitted = ViewData["deletionNotPermitted"] as bool? ?? false;
+}
+
+<h2>Šalinti renginį?</h2>
+
+@if (notPermitted)
+{
+    <div class="alert alert-danger">Šio renginio šalinti negalima – su juo susijusios kovos.</div>
+}
+
+<table class="table">
+    <tr><th>Pavadinimas</th><td>@Model.RenginioPavadinimas</td></tr>
+    <tr><th>Data</th><td>@Model.RenginioData.ToString("yyyy-MM-dd HH:mm")</td></tr>
+    <tr><th>Vieta</th><td>@Model.VietaAdresas</td></tr>
+    <tr><th>Miestas</th><td>@Model.Miestas</td></tr>
+    <tr><th>Organizatorius</th><td>@Model.Organizatorius</td></tr>
+</table>
+
+@if (!notPermitted)
+{
+    <form asp-action="DeleteConfirm" asp-route-id="@Model.RenginioPavadinimas" method="post">
+        <button type="submit" class="btn btn-danger">Taip, pašalinti</button>
+        <a class="btn btn-secondary" asp-action="Index">Atšaukti</a>
+    </form>
+}
+else
+{
+    <a class="btn btn-secondary" asp-action="Index">Grįžti</a>
+}

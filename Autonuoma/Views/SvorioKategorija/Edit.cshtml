@@ -1,0 +1,40 @@
+﻿@model Lab_2_DB.Models.Renginys
+@{
+    ViewBag.Title = "Redaguoti renginį";
+}
+
+<h2>Redaguoti renginį</h2>
+
+<form asp-action="Edit" asp-route-id="@Model.OriginalPK" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="RenginioPavadinimas"></label>
+        <input asp-for="RenginioPavadinimas" class="form-control" />
+        <span asp-validation-for="RenginioPavadinimas" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="RenginioData"></label>
+        <input asp-for="RenginioData" type="datetime-local" class="form-control"
+               value="@Model.RenginioData.ToString("yyyy-MM-ddTHH:mm")" />
+        <span asp-validation-for="RenginioData" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="VietaAdresas"></label>
+        <input asp-for="VietaAdresas" class="form-control" />
+        <span asp-validation-for="VietaAdresas" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Miestas"></label>
+        <input asp-for="Miestas" class="form-control" />
+        <span asp-validation-for="Miestas" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Organizatorius"></label>
+        <input asp-for="Organizatorius" class="form-control" />
+        <span asp-validation-for="Organizatorius" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Išsaugoti</button>
+    <a class="btn btn-secondary" asp-action="Index">Atšaukti</a>
+</form>

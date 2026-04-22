@@ -1,0 +1,46 @@
+﻿@model Lab_2_DB.Models.Treneris
+@{
+    ViewBag.Title = "Naujas treneris";
+}
+
+<h2>Naujas treneris</h2>
+
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="Vardas"></label>
+        <input asp-for="Vardas" class="form-control" />
+        <span asp-validation-for="Vardas" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Pavarde"></label>
+        <input asp-for="Pavarde" class="form-control" />
+        <span asp-validation-for="Pavarde" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Specializacija"></label>
+        <input asp-for="Specializacija" class="form-control" />
+        <span asp-validation-for="Specializacija" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Pareigos"></label>
+        <input asp-for="Pareigos" class="form-control" />
+        <span asp-validation-for="Pareigos" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PatirtisMetais"></label>
+        <input asp-for="PatirtisMetais" type="number" class="form-control" />
+        <span asp-validation-for="PatirtisMetais" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FkKovinioSportoSale"></label>
+        <select asp-for="FkKovinioSportoSale" asp-items="@Model.SportoSalesList" class="form-control">
+            <option value="">-- pasirinkite salę --</option>
+        </select>
+        <span asp-validation-for="FkKovinioSportoSale" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Sukurti</button>
+    <a class="btn btn-secondary" asp-action="Index">Atšaukti</a>
+</form>

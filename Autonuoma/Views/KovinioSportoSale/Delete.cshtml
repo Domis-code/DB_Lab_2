@@ -1,0 +1,32 @@
+﻿@model Lab_2_DB.Models.KovinioSportoSale
+@{
+    ViewBag.Title = "Šalinti salę";
+    bool notPermitted = ViewData["deletionNotPermitted"] as bool? ?? false;
+}
+
+<h2>Šalinti salę?</h2>
+
+@if (notPermitted)
+{
+    <div class="alert alert-danger">Šios salės šalinti negalima – ji naudojama (trenerių ar narysčių istorijoje).</div>
+}
+
+<table class="table">
+    <tr><th>Klubo pavadinimas</th><td>@Model.KluboPavadinimas</td></tr>
+    <tr><th>Miestas</th><td>@Model.Miestas</td></tr>
+    <tr><th>Šalis</th><td>@Model.Salis</td></tr>
+    <tr><th>Adresas</th><td>@Model.Adresas</td></tr>
+    <tr><th>Telefonas</th><td>@Model.TelefonoNr</td></tr>
+</table>
+
+@if (!notPermitted)
+{
+    <form asp-action="DeleteConfirm" asp-route-id="@Model.KluboPavadinimas" method="post">
+        <button type="submit" class="btn btn-danger">Taip, pašalinti</button>
+        <a class="btn btn-secondary" asp-action="Index">Atšaukti</a>
+    </form>
+}
+else
+{
+    <a class="btn btn-secondary" asp-action="Index">Grįžti</a>
+}

@@ -1,0 +1,39 @@
+﻿@model Lab_2_DB.Models.KovinioSportoSale
+@{
+    ViewBag.Title = "Redaguoti salę";
+}
+
+<h2>Redaguoti sporto salę</h2>
+
+<form asp-action="Edit" asp-route-id="@Model.OriginalPK" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="KluboPavadinimas"></label>
+        <input asp-for="KluboPavadinimas" class="form-control" />
+        <span asp-validation-for="KluboPavadinimas" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Miestas"></label>
+        <input asp-for="Miestas" class="form-control" />
+        <span asp-validation-for="Miestas" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Salis"></label>
+        <input asp-for="Salis" class="form-control" />
+        <span asp-validation-for="Salis" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Adresas"></label>
+        <input asp-for="Adresas" class="form-control" />
+        <span asp-validation-for="Adresas" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="TelefonoNr"></label>
+        <input asp-for="TelefonoNr" class="form-control" />
+        <span asp-validation-for="TelefonoNr" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Išsaugoti</button>
+    <a class="btn btn-secondary" asp-action="Index">Atšaukti</a>
+</form>

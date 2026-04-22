@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Lab_2_DB.Models
 {
@@ -36,6 +37,11 @@ namespace Lab_2_DB.Models
         [Required(ErrorMessage = "Pasirinkite sporto salę")]
         [StringLength(255)]
         public string FkKovinioSportoSales { get; set; } = null!;
+
+        public IList<SelectListItem> NarystesTipaiList { get; set; } = new List<SelectListItem>();
+        public IList<SelectListItem> StatusaiList { get; set; } = new List<SelectListItem>();
+        public IList<SelectListItem> KovotojaiList { get; set; } = new List<SelectListItem>();
+        public IList<SelectListItem> SportoSalesList { get; set; } = new List<SelectListItem>();
     }
 }
 

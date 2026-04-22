@@ -1,0 +1,18 @@
+@model Lab_2_DB.Models.KovotojoSportoSaliuIstorija
+@{
+    ViewBag.Title = "Redaguoti istorijos įrašą";
+}
+
+<h2>Redaguoti istorijos įrašą</h2>
+<form asp-action="Edit" asp-route-id="@Model.Id" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group"><label asp-for="FkKovotojai"></label><select asp-for="FkKovotojai" asp-items="@Model.KovotojaiList" class="form-control"><option value="">-- pasirinkite --</option></select></div>
+    <div class="form-group"><label asp-for="FkKovinioSportoSales"></label><select asp-for="FkKovinioSportoSales" asp-items="@Model.SportoSalesList" class="form-control"><option value="">-- pasirinkite --</option></select></div>
+    <div class="form-group"><label asp-for="NarystesPradzia"></label><input asp-for="NarystesPradzia" type="date" class="form-control" /><span asp-validation-for="NarystesPradzia" class="text-danger"></span></div>
+    <div class="form-group"><label asp-for="NarystesPabaiga"></label><input asp-for="NarystesPabaiga" type="date" class="form-control" /><span asp-validation-for="NarystesPabaiga" class="text-danger"></span></div>
+    <div class="form-group"><label asp-for="NarystesTipas"></label><select asp-for="NarystesTipas" asp-items="@Model.NarystesTipaiList" class="form-control"><option value="">-- pasirinkite --</option></select></div>
+    <div class="form-group"><label asp-for="Statusas"></label><select asp-for="Statusas" asp-items="@Model.StatusaiList" class="form-control"><option value="">-- nepriskirta --</option></select></div>
+    <div class="form-group"><label asp-for="Pastabos"></label><input asp-for="Pastabos" class="form-control" /></div>
+    <button type="submit" class="btn btn-primary mt-3">Išsaugoti</button>
+    <a class="btn btn-secondary mt-3" asp-action="Index">Atšaukti</a>
+</form>
