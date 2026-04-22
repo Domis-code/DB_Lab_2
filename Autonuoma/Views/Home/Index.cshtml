@@ -1,2 +1,98 @@
-﻿@* this will also be used as page title in main layout *@
-@{ ViewData["title"] = "Pradžia"; }
+@{
+    ViewData["title"] = "Pagrindinis";
+}
+
+<h2>Pagrindinis puslapis</h2>
+<p>Pasirink lentelę, kurią nori peržiūrėti ar redaguoti.</p>
+
+<div class="row g-3 mt-1">
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Kovotojai</h5>
+                <p class="card-text">Kovotojų sąrašas, kūrimas, redagavimas ir šalinimas.</p>
+                <a class="btn btn-primary" href="@Url.Action("Index", "Kovotojas")">Atidaryti</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Sporto salės</h5>
+                <p class="card-text">Kovinio sporto salių valdymas ir kontaktiniai duomenys.</p>
+                <a class="btn btn-primary" href="@Url.Action("Index", "KovinioSportoSale")">Atidaryti</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Renginiai</h5>
+                <p class="card-text">Renginių datos, vieta ir organizatoriai.</p>
+                <a class="btn btn-primary" href="@Url.Action("Index", "Renginys")">Atidaryti</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Treneriai</h5>
+                <p class="card-text">Trenerių įrašai ir jų priskyrimas sporto salėms.</p>
+                <a class="btn btn-primary" href="@Url.Action("Index", "Treneris")">Atidaryti</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Svorio kategorijos</h5>
+                <p class="card-text">Svorio kategorijų ir lyties grupių valdymas.</p>
+                <a class="btn btn-primary" href="@Url.Action("Index", "SvorioKategorija")">Atidaryti</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Kovos taisyklės</h5>
+                <p class="card-text">Taisyklių tipai, raundų skaičius ir taškų sistema.</p>
+                <a class="btn btn-primary" href="@Url.Action("Index", "KovosTaisykles")">Atidaryti</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Kovos duomenys</h5>
+                <p class="card-text">Pagrindiniai kovos įrašai su statusu, renginiu ir taisyklėmis.</p>
+                <a class="btn btn-primary" href="@Url.Action("Index", "KovosDuomenys")">Atidaryti</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Kovos raundo info</h5>
+                <p class="card-text">Raundų numeriai, trukmės ir pabaigos tipai.</p>
+                <a class="btn btn-primary" href="@Url.Action("Index", "KovosRaundoInfo")">Atidaryti</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Salių istorija</h5>
+                <p class="card-text">Kovotojų narystės sporto salėse istorija.</p>
+                <a class="btn btn-primary" href="@Url.Action("Index", "KovotojoSportoSaliuIstorija")">Atidaryti</a>
+            </div>
+        </div>
+    </div>
+</div>

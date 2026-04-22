@@ -1,0 +1,41 @@
+﻿@model List<Lab_2_DB.Models.KovosTaisykles>
+@{
+    ViewBag.Title = "Kovos taisyklės";
+}
+
+<h2>Kovos taisyklės</h2>
+
+<p><a class="btn btn-success" asp-action="Create">+ Pridėti naujas taisykles</a></p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Pavadinimas</th>
+            <th>Raundų sk.</th>
+            <th>Raundo trukmė (min)</th>
+            <th>Tipas</th>
+            <th>Taškų sistema</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count == 0)
+        {
+            <tr><td colspan="6"><em>Įrašų nėra.</em></td></tr>
+        }
+        @foreach (var t in Model)
+        {
+            <tr>
+                <td>@t.TaisykliuPavadinimas</td>
+                <td>@t.RaunduSkaicius</td>
+                <td>@t.RaundoTrukmeMin</td>
+                <td>@t.KovosTaisykliuTipas</td>
+                <td>@t.TaskuSistema</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@t.TaisykliuPavadinimas">Redaguoti</a> |
+                    <a asp-action="Delete" asp-route-id="@t.TaisykliuPavadinimas">Šalinti</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

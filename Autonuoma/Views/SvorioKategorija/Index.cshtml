@@ -1,0 +1,41 @@
+﻿@model List<Lab_2_DB.Models.Renginys>
+@{
+    ViewBag.Title = "Renginiai";
+}
+
+<h2>Renginiai</h2>
+
+<p><a class="btn btn-success" asp-action="Create">+ Pridėti naują renginį</a></p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Pavadinimas</th>
+            <th>Data</th>
+            <th>Vieta</th>
+            <th>Miestas</th>
+            <th>Organizatorius</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count == 0)
+        {
+            <tr><td colspan="6"><em>Įrašų nėra.</em></td></tr>
+        }
+        @foreach (var r in Model)
+        {
+            <tr>
+                <td>@r.RenginioPavadinimas</td>
+                <td>@r.RenginioData.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>@r.VietaAdresas</td>
+                <td>@r.Miestas</td>
+                <td>@r.Organizatorius</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@r.RenginioPavadinimas">Redaguoti</a> |
+                    <a asp-action="Delete" asp-route-id="@r.RenginioPavadinimas">Šalinti</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

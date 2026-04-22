@@ -1,0 +1,17 @@
+@model Lab_2_DB.Models.KovosRaundoInfo
+@{
+    ViewBag.Title = "Redaguoti raundo įrašą";
+}
+
+<h2>Redaguoti raundo įrašą</h2>
+<form asp-action="Edit" asp-route-id="@Model.Id" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group"><label asp-for="FkKovosDuomenys"></label><select asp-for="FkKovosDuomenys" asp-items="@Model.KovosDuomenysList" class="form-control"><option value="">-- pasirinkite --</option></select></div>
+    <div class="form-group"><label asp-for="RaundoNumeris"></label><input asp-for="RaundoNumeris" class="form-control" /><span asp-validation-for="RaundoNumeris" class="text-danger"></span></div>
+    <div class="form-group"><label asp-for="RaundoTrukmeMin"></label><input asp-for="RaundoTrukmeMin" class="form-control" /><span asp-validation-for="RaundoTrukmeMin" class="text-danger"></span></div>
+    <div class="form-group"><label asp-for="RaundoTrukmeSek"></label><input asp-for="RaundoTrukmeSek" class="form-control" /><span asp-validation-for="RaundoTrukmeSek" class="text-danger"></span></div>
+    <div class="form-group"><label asp-for="RaundoPabaiga"></label><select asp-for="RaundoPabaiga" asp-items="@Model.RaundoPabaigosTipaiList" class="form-control"><option value="">-- pasirinkite --</option></select></div>
+    <div class="form-group"><label asp-for="Pastabos"></label><input asp-for="Pastabos" class="form-control" /><span asp-validation-for="Pastabos" class="text-danger"></span></div>
+    <button type="submit" class="btn btn-primary mt-3">Išsaugoti</button>
+    <a class="btn btn-secondary mt-3" asp-action="Index">Atšaukti</a>
+</form>

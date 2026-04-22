@@ -1,0 +1,19 @@
+@model Lab_2_DB.Models.KovosDuomenys
+@{
+    ViewBag.Title = "Nauji kovos duomenys";
+}
+
+<h2>Nauji kovos duomenys</h2>
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group"><label asp-for="KovosEile"></label><input asp-for="KovosEile" class="form-control" /><span asp-validation-for="KovosEile" class="text-danger"></span></div>
+    <div class="form-group"><label asp-for="KovosLaikasData"></label><input asp-for="KovosLaikasData" type="datetime-local" class="form-control" value="@Model.KovosLaikasData.ToString("yyyy-MM-ddTHH:mm")" /><span asp-validation-for="KovosLaikasData" class="text-danger"></span></div>
+    <div class="form-check mt-2"><input asp-for="TitulineKova" class="form-check-input" /><label asp-for="TitulineKova" class="form-check-label"></label></div>
+    <div class="form-group mt-2"><label asp-for="Pastabos"></label><input asp-for="Pastabos" class="form-control" /><span asp-validation-for="Pastabos" class="text-danger"></span></div>
+    <div class="form-group"><label asp-for="KovosStatutas"></label><select asp-for="KovosStatutas" asp-items="@Model.KovosStatusasList" class="form-control"><option value="">-- pasirinkite --</option></select></div>
+    <div class="form-group"><label asp-for="FkSvorioKategorija"></label><select asp-for="FkSvorioKategorija" asp-items="@Model.SvorioKategorijaList" class="form-control"><option value="">-- pasirinkite --</option></select></div>
+    <div class="form-group"><label asp-for="FkRenginys"></label><select asp-for="FkRenginys" asp-items="@Model.RenginysList" class="form-control"><option value="">-- pasirinkite --</option></select></div>
+    <div class="form-group"><label asp-for="FkKovosTaisykles"></label><select asp-for="FkKovosTaisykles" asp-items="@Model.KovosTaisyklesList" class="form-control"><option value="">-- pasirinkite --</option></select></div>
+    <button type="submit" class="btn btn-primary mt-3">Sukurti</button>
+    <a class="btn btn-secondary mt-3" asp-action="Index">Atšaukti</a>
+</form>

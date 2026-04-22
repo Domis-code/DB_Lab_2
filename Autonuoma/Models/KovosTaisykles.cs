@@ -5,6 +5,7 @@ namespace Lab_2_DB.Models
 {
     public class KovosTaisykles
     {
+        public string? OriginalPK { get; set; }
         [Display(Name = "Taisyklų pavadinimas")]
         [Required(ErrorMessage = "Įveskite taisyklių pavadinimą")]
         [StringLength(100)]

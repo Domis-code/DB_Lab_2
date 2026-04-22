@@ -69,66 +69,36 @@
 				<div class="container-fluid d-flex justify-content-center">
 					<div class="collapse navbar-collapse" id="navbarContent">
 						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-							@* main menu links go here *@
 							<li class="nav-item">
-								<a href="@Url.Action("Index", "SutartisF2")" class="@MarkActive("SutartisF2") nav-link">Sutartys (F2)</a>
+								<a href="@Url.Action("Index", "Kovotojas")" class="@MarkActive("Kovotojas") nav-link">Kovotojai (F1)</a>
 							</li>
 							<li class="nav-item">
-								<a href="@Url.Action("Index", "Paslauga")" class="@MarkActive("Paslauga") nav-link">Paslaugos</a>
+								<a href="@Url.Action("Index", "KovinioSportoSale")" class="@MarkActive("KovinioSportoSale") nav-link">Sporto salės</a>
 							</li>
 							<li class="nav-item">
-								<a href="@Url.Action("Index", "Klientas")" class="@MarkActive("Klientas") nav-link">Klientai</a>
+								<a href="@Url.Action("Index", "Renginys")" class="@MarkActive("Renginys") nav-link">Renginiai</a>
 							</li>
 							<li class="nav-item">
-								<a href="@Url.Action("Index", "Darbuotojas")" class="@MarkActive("Darbuotojas") nav-link">Darbuotojai</a>
+								<a href="@Url.Action("Index", "Treneris")" class="@MarkActive("Treneris") nav-link">Treneriai</a>
 							</li>
 							<li class="nav-item">
-								<a href="@Url.Action("Index", "Automobilis")" class="@MarkActive("Automobilis") nav-link">Automobiliai</a>
+								<a href="@Url.Action("Index", "SvorioKategorija")" class="@MarkActive("SvorioKategorija") nav-link">Svorio kategorijos</a>
 							</li>
 							<li class="nav-item">
-								<a href="@Url.Action("Index", "Marke")" class="@MarkActive("Marke") nav-link">Markės</a>
+								<a href="@Url.Action("Index", "KovosTaisykles")" class="@MarkActive("KovosTaisykles") nav-link">Kovos taisyklės</a>
 							</li>
 							<li class="nav-item">
-								<a href="@Url.Action("Index", "Modelis")" class="@MarkActive("Modelis") nav-link">Modeliai</a>
+								<a href="@Url.Action("Index", "KovosDuomenys")" class="@MarkActive("KovosDuomenys") nav-link">Kovos duomenys</a>
+							</li>
+							<li class="nav-item">
+								<a href="@Url.Action("Index", "KovosRaundoInfo")" class="@MarkActive("KovosRaundoInfo") nav-link">Kovos raundo info</a>
+							</li>
+							<li class="nav-item">
+								<a href="@Url.Action("Index", "KovotojoSportoSaliuIstorija")" class="@MarkActive("KovotojoSportoSaliuIstorija") nav-link">Salių istorija</a>
 							</li>
 						</ul>
 
-						@* drop-down menu for report links *@
-						<ul class="navbar-nav justify-content-right mb-2 mb-lg-0">
-							<li class="nav-item dropdown">
-								<a
-									class="@MarkActive("Report") nav-link dropdown-toggle"
-									href="#"
-									id="navbarReports"
-									role="button"
-									data-bs-toggle="dropdown"
-									aria-expanded="false"
-								>
-									Ataskaitos
-								</a>
-								<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarReports">
-									@* report links go here *@									
-									<li>
-										<a
-											href="@Url.Action("Contracts", "Reports")"
-											class="@MarkActive("Reports", "Contracts") dropdown-item"
-										>Sutarčių ataskaita</a>
-									</li>
-									<li>
-										<a
-											href="@Url.Action("LateContracts", "Reports")"
-											class="@MarkActive("Reports", "LateContracts") dropdown-item"
-										>Vėluojančių sutarčių ataskaita (neįskaitinė)</a>
-									</li>
-									<li>
-										<a
-											href="@Url.Action("Services", "Reports")"
-											class="@MarkActive("Reports", "Services") dropdown-item"
-										>Paslaugų ataskaita (neįskaitinė)</a>
-									</li>
-								</ul>
-							</li>
-						</ul>
+						<ul class="navbar-nav justify-content-right mb-2 mb-lg-0"></ul>
 					</div>
 				</div>
 			</div>

@@ -1,0 +1,27 @@
+@model Lab_2_DB.Models.KovosRaundoInfo
+@{
+    ViewBag.Title = "Šalinti raundo įrašą";
+    bool notPermitted = ViewData["deletionNotPermitted"] as bool? ?? false;
+}
+
+<h2>Šalinti raundo įrašą?</h2>
+@if (notPermitted)
+{
+    <div class="alert alert-danger">Šio įrašo šalinti negalima.</div>
+}
+<table class="table">
+    <tr><th>ID</th><td>@Model.Id</td></tr>
+    <tr><th>Kova</th><td>@Model.FkKovosDuomenys</td></tr>
+    <tr><th>Raundas</th><td>@Model.RaundoNumeris</td></tr>
+</table>
+@if (!notPermitted)
+{
+    <form asp-action="DeleteConfirm" asp-route-id="@Model.Id" method="post">
+        <button type="submit" class="btn btn-danger">Taip, pašalinti</button>
+        <a class="btn btn-secondary" asp-action="Index">Atšaukti</a>
+    </form>
+}
+else
+{
+    <a class="btn btn-secondary" asp-action="Index">Grįžti</a>
+}

@@ -1,0 +1,26 @@
+@model List<Lab_2_DB.Models.KovotojoSportoSaliuIstorija>
+@{
+    ViewBag.Title = "Kovotojo sporto salių istorija";
+}
+
+<h2>Kovotojo sporto salių istorija</h2>
+<p><a class="btn btn-success" asp-action="Create">+ Pridėti įrašą</a></p>
+<table class="table">
+    <thead>
+        <tr><th>ID</th><th>Kovotojas</th><th>Salė</th><th>Nuo</th><th>Iki</th><th></th></tr>
+    </thead>
+    <tbody>
+    @if (Model.Count == 0) { <tr><td colspan="6"><em>Įrašų nėra.</em></td></tr> }
+    @foreach (var i in Model)
+    {
+        <tr>
+            <td>@i.Id</td>
+            <td>@i.FkKovotojai</td>
+            <td>@i.FkKovinioSportoSales</td>
+            <td>@i.NarystesPradzia.ToString("yyyy-MM-dd")</td>
+            <td>@i.NarystesPabaiga.ToString("yyyy-MM-dd")</td>
+            <td><a asp-action="Edit" asp-route-id="@i.Id">Redaguoti</a> | <a asp-action="Delete" asp-route-id="@i.Id">Šalinti</a></td>
+        </tr>
+    }
+    </tbody>
+</table>

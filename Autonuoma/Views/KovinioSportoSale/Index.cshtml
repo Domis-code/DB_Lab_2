@@ -1,0 +1,41 @@
+﻿@model List<Lab_2_DB.Models.KovinioSportoSale>
+@{
+    ViewBag.Title = "Sporto salės";
+}
+
+<h2>Kovinio sporto salės</h2>
+
+<p><a class="btn btn-success" asp-action="Create">+ Pridėti naują salę</a></p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Klubo pavadinimas</th>
+            <th>Miestas</th>
+            <th>Šalis</th>
+            <th>Adresas</th>
+            <th>Telefonas</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count == 0)
+        {
+            <tr><td colspan="6"><em>Įrašų nėra.</em></td></tr>
+        }
+        @foreach (var s in Model)
+        {
+            <tr>
+                <td>@s.KluboPavadinimas</td>
+                <td>@s.Miestas</td>
+                <td>@s.Salis</td>
+                <td>@s.Adresas</td>
+                <td>@s.TelefonoNr</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@s.KluboPavadinimas">Redaguoti</a> |
+                    <a asp-action="Delete" asp-route-id="@s.KluboPavadinimas">Šalinti</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

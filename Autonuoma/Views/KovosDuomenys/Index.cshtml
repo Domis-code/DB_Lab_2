@@ -1,0 +1,32 @@
+@model List<Lab_2_DB.Models.KovosDuomenys>
+@{
+    ViewBag.Title = "Kovos duomenys";
+}
+
+<h2>Kovos duomenys</h2>
+<p><a class="btn btn-success" asp-action="Create">+ Pridėti kovą</a></p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th><th>Eilė</th><th>Laikas</th><th>Titulinė</th><th>Statusas</th><th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @if (Model.Count == 0) { <tr><td colspan="6"><em>Įrašų nėra.</em></td></tr> }
+    @foreach (var k in Model)
+    {
+        <tr>
+            <td>@k.Id</td>
+            <td>@k.KovosEile</td>
+            <td>@k.KovosLaikasData.ToString("yyyy-MM-dd HH:mm")</td>
+            <td>@(k.TitulineKova ? "Taip" : "Ne")</td>
+            <td>@k.KovosStatutas</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@k.Id">Redaguoti</a> |
+                <a asp-action="Delete" asp-route-id="@k.Id">Šalinti</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

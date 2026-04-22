@@ -1,0 +1,32 @@
+﻿@model Lab_2_DB.Models.KovosTaisykles
+@{
+    ViewBag.Title = "Šalinti taisykles";
+    bool notPermitted = ViewData["deletionNotPermitted"] as bool? ?? false;
+}
+
+<h2>Šalinti kovos taisykles?</h2>
+
+@if (notPermitted)
+{
+    <div class="alert alert-danger">Šių taisyklių šalinti negalima – jos naudojamos kovose.</div>
+}
+
+<table class="table">
+    <tr><th>Pavadinimas</th><td>@Model.TaisykliuPavadinimas</td></tr>
+    <tr><th>Raundų skaičius</th><td>@Model.RaunduSkaicius</td></tr>
+    <tr><th>Raundo trukmė (min)</th><td>@Model.RaundoTrukmeMin</td></tr>
+    <tr><th>Tipas</th><td>@Model.KovosTaisykliuTipas</td></tr>
+    <tr><th>Taškų sistema</th><td>@Model.TaskuSistema</td></tr>
+</table>
+
+@if (!notPermitted)
+{
+    <form asp-action="DeleteConfirm" asp-route-id="@Model.TaisykliuPavadinimas" method="post">
+        <button type="submit" class="btn btn-danger">Taip, pašalinti</button>
+        <a class="btn btn-secondary" asp-action="Index">Atšaukti</a>
+    </form>
+}
+else
+{
+    <a class="btn btn-secondary" asp-action="Index">Grįžti</a>
+}
