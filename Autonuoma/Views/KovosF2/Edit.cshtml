@@ -1,0 +1,81 @@
+@model Lab_2_DB.Models.KovosF2.KovaCE
+@{
+    ViewData["title"] = "Kova F2 - redaguoti";
+}
+
+<h2>Kova (F2) - redaguoti</h2>
+
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input asp-for="Kova.Id" type="hidden" />
+
+    <div class="row">
+        <div class="col-md-4 form-group">
+            <label asp-for="Kova.KovosEile"></label>
+            <input asp-for="Kova.KovosEile" class="form-control" />
+        </div>
+        <div class="col-md-4 form-group">
+            <label asp-for="Kova.KovosLaikasData"></label>
+            <input asp-for="Kova.KovosLaikasData" type="datetime-local" class="form-control" value="@Model.Kova.KovosLaikasData.ToString("yyyy-MM-ddTHH:mm")" />
+        </div>
+        <div class="col-md-4 form-group">
+            <label asp-for="Kova.KovosStatutas"></label>
+            <select asp-for="Kova.KovosStatutas" asp-items="@Model.Lists.KovosStatusai" class="form-control"><option value="">-- pasirinkite --</option></select>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col-md-4 form-group">
+            <label asp-for="Kova.FkSvorioKategorija"></label>
+            <select asp-for="Kova.FkSvorioKategorija" asp-items="@Model.Lists.SvorioKategorijos" class="form-control"><option value="">-- pasirinkite --</option></select>
+        </div>
+        <div class="col-md-4 form-group">
+            <label asp-for="Kova.FkRenginys"></label>
+            <select asp-for="Kova.FkRenginys" asp-items="@Model.Lists.Renginiai" class="form-control"><option value="">-- pasirinkite --</option></select>
+        </div>
+        <div class="col-md-4 form-group">
+            <label asp-for="Kova.FkKovosTaisykles"></label>
+            <select asp-for="Kova.FkKovosTaisykles" asp-items="@Model.Lists.KovosTaisykles" class="form-control"><option value="">-- pasirinkite --</option></select>
+        </div>
+    </div>
+
+    <div class="form-check mt-2">
+        <input asp-for="Kova.TitulineKova" class="form-check-input" />
+        <label asp-for="Kova.TitulineKova" class="form-check-label"></label>
+    </div>
+    <div class="form-group mt-2">
+        <label asp-for="Kova.Pastabos"></label>
+        <input asp-for="Kova.Pastabos" class="form-control" />
+    </div>
+
+    <hr />
+    <h4>Kovotojo dalyvavimai (detalės)</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Kovotojas</th><th>Raundas</th><th>Min</th><th>Sek</th><th>Baigtis</th><th>Rezultatas</th><th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @for (var i = 0; i < Model.KovotojuDalyvavimai.Count; i++)
+        {
+            <tr>
+                <td>
+                    <input asp-for="KovotojuDalyvavimai[i].InListId" type="hidden" />
+                    <select asp-for="KovotojuDalyvavimai[i].FkKovotojai" asp-items="@Model.Lists.Kovotojai" class="form-control"></select>
+                </td>
+                <td><input asp-for="KovotojuDalyvavimai[i].BaigtiesRaundas" class="form-control" /></td>
+                <td><input asp-for="KovotojuDalyvavimai[i].BaigtiesLaikasMin" class="form-control" /></td>
+                <td><input asp-for="KovotojuDalyvavimai[i].BaigtiesLaikasSek" class="form-control" /></td>
+                <td><select asp-for="KovotojuDalyvavimai[i].BaigtiesBudas" asp-items="@Model.Lists.BaigtiesBudai" class="form-control"></select></td>
+                <td><select asp-for="KovotojuDalyvavimai[i].Rezultatas" asp-items="@Model.Lists.Rezultatai" class="form-control"></select></td>
+                <td><button class="btn btn-sm btn-danger" type="submit" name="remove" value="@Model.KovotojuDalyvavimai[i].InListId">Šalinti</button></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    <button class="btn btn-outline-primary" type="submit" name="add" value="1">+ Pridėti eilutę</button>
+    <button class="btn btn-primary" type="submit" name="save" value="1">Išsaugoti</button>
+    <a class="btn btn-secondary" asp-action="Index">Atšaukti</a>
+</form>

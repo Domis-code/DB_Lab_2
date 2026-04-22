@@ -44,11 +44,10 @@ public class KovosDuomenysRepo : RepoBase
     public static void Insert(KovosDuomenys k)
     {
         var query = $@"INSERT INTO `{Config.TblPrefix}Kovos_duomenys`
-                       (id, Kovos_Eile, Tituline_kova, Pastabos, Kovos_laikas_data, Kovos_statutas, fk_Svorio_Kategorija, fk_Renginys, fk_Kovos_Taisykles)
-                       VALUES (?id, ?eile, ?tit, ?past, ?laikas, ?stat, ?sv, ?r, ?t)";
+                       (Kovos_Eile, Tituline_kova, Pastabos, Kovos_laikas_data, Kovos_statutas, fk_Svorio_Kategorija, fk_Renginys, fk_Kovos_Taisykles)
+                       VALUES (?eile, ?tit, ?past, ?laikas, ?stat, ?sv, ?r, ?t)";
         Sql.Insert(query, args =>
         {
-            args.Add("?id", NextId("Kovos_duomenys"));
             args.Add("?eile", k.KovosEile);
             args.Add("?tit", k.TitulineKova);
             args.Add("?past", k.Pastabos);
@@ -90,11 +89,4 @@ public class KovosDuomenysRepo : RepoBase
     public static List<SvorioKategorija> ListSvorioKategorija() => SvorioKategorijaRepo.List();
     public static List<Renginys> ListRenginiai() => RenginysRepo.List();
     public static List<KovosTaisykles> ListKovosTaisykles() => KovosTaisyklesRepo.List();
-
-    private static int NextId(string tableName)
-    {
-        var query = $@"SELECT COALESCE(MAX(id), 0) + 1 AS next_id FROM `{Config.TblPrefix}{tableName}`";
-        var rows = Sql.Query(query);
-        return Convert.ToInt32(rows[0]["next_id"]);
-    }
 }

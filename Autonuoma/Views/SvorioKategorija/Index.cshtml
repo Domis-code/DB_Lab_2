@@ -1,39 +1,43 @@
-﻿@model List<Lab_2_DB.Models.Renginys>
+﻿@model List<Lab_2_DB.Models.SvorioKategorija>
 @{
-    ViewBag.Title = "Renginiai";
+    ViewBag.Title = "Svorio kategorijos";
 }
 
-<h2>Renginiai</h2>
+<h2>Svorio kategorijos</h2>
 
-<p><a class="btn btn-success" asp-action="Create">+ Pridėti naują renginį</a></p>
+<p><a class="btn btn-success" asp-action="Create">+ Pridėti naują kategoriją</a></p>
 
 <table class="table">
     <thead>
         <tr>
+            <th>Id</th>
+            <th>Sporto šaka</th>
             <th>Pavadinimas</th>
-            <th>Data</th>
-            <th>Vieta</th>
-            <th>Miestas</th>
-            <th>Organizatorius</th>
+            <th>Min (kg)</th>
+            <th>Maks (kg)</th>
+            <th>Amžius nuo</th>
+            <th>Lytis</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
         @if (Model.Count == 0)
         {
-            <tr><td colspan="6"><em>Įrašų nėra.</em></td></tr>
+            <tr><td colspan="8"><em>Įrašų nėra.</em></td></tr>
         }
-        @foreach (var r in Model)
+        @foreach (var s in Model)
         {
             <tr>
-                <td>@r.RenginioPavadinimas</td>
-                <td>@r.RenginioData.ToString("yyyy-MM-dd HH:mm")</td>
-                <td>@r.VietaAdresas</td>
-                <td>@r.Miestas</td>
-                <td>@r.Organizatorius</td>
+                <td>@s.Id</td>
+                <td>@s.SportoSaka</td>
+                <td>@s.KategorijosPavadinimas</td>
+                <td>@s.MinKg.ToString("0.##")</td>
+                <td>@s.MaxKg.ToString("0.##")</td>
+                <td>@s.AmziausGrupe</td>
+                <td>@(s.LytiesGrupe == 1 ? "Vyras" : "Moteris")</td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@r.RenginioPavadinimas">Redaguoti</a> |
-                    <a asp-action="Delete" asp-route-id="@r.RenginioPavadinimas">Šalinti</a>
+                    <a asp-action="Edit" asp-route-id="@s.Id">Redaguoti</a> |
+                    <a asp-action="Delete" asp-route-id="@s.Id">Šalinti</a>
                 </td>
             </tr>
         }
