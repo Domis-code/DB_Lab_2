@@ -49,10 +49,11 @@ public class KovosRaundoInfoRepo : RepoBase
     public static void Insert(KovosRaundoInfo r)
     {
         var query = $@"INSERT INTO `{Config.TblPrefix}Kovos_raundo_info`
-                       (Raundo_Numeris, Raundo_Trukme_min, Raundo_Trukme_sek, Pastabos, Raundo_Pabaiga, fk_Kovos_duomenys)
-                       VALUES (?nr, ?min, ?sek, ?past, ?pb, ?kova)";
+                       (id, Raundo_Numeris, Raundo_Trukme_min, Raundo_Trukme_sek, Pastabos, Raundo_Pabaiga, fk_Kovos_duomenys)
+                       VALUES (?id, ?nr, ?min, ?sek, ?past, ?pb, ?kova)";
         Sql.Insert(query, args =>
         {
+            args.Add("?id", NextId("Kovos_raundo_info"));
             args.Add("?nr", r.RaundoNumeris);
             args.Add("?min", r.RaundoTrukmeMin);
             args.Add("?sek", r.RaundoTrukmeSek);

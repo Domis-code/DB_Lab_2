@@ -42,10 +42,11 @@ public class SvorioKategorijaRepo : RepoBase
     public static void Insert(SvorioKategorija s)
     {
         var query = $@"INSERT INTO `{Config.TblPrefix}Svorio_Kategorija`
-		               (Sporto_Saka, Kategorijos_Pavadinimas, Min_kg, Max_kg, Amziaus_Grupe, Lyties_Grupe)
-		               VALUES (?saka, ?pav, ?min, ?max, ?amz, ?lyt)";
+		               (id, Sporto_Saka, Kategorijos_Pavadinimas, Min_kg, Max_kg, Amziaus_Grupe, Lyties_Grupe)
+		               VALUES (?id, ?saka, ?pav, ?min, ?max, ?amz, ?lyt)";
         Sql.Insert(query, args =>
         {
+            args.Add("?id", NextId("Svorio_Kategorija"));
             args.Add("?saka", s.SportoSaka);
             args.Add("?pav", s.KategorijosPavadinimas);
             args.Add("?min", s.MinKg);

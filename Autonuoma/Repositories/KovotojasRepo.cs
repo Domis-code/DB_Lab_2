@@ -36,9 +36,10 @@ namespace Lab_2_DB.Repositories
 
         public static void Insert(Kovotojas k)
         {
-            var query = $@"INSERT INTO `{Config.TblPrefix}Kovotojai` (Vardas,Pavarde,Gimimo_metai,Svoris_kg,Ugis_cm) VALUES (?vardas,?pavarde,?gm,?svoris,?ugis)";
+            var query = $@"INSERT INTO `{Config.TblPrefix}Kovotojai` (id,Vardas,Pavarde,Gimimo_metai,Svoris_kg,Ugis_cm) VALUES (?id,?vardas,?pavarde,?gm,?svoris,?ugis)";
             Sql.Insert(query, args =>
             {
+                args.Add("?id", NextId("Kovotojai"));
                 args.Add("?vardas", k.Vardas);
                 args.Add("?pavarde", k.Pavarde);
                 args.Add("?gm", k.GimimoData);

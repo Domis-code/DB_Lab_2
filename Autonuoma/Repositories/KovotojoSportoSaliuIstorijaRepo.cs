@@ -56,10 +56,11 @@ public class KovotojoSportoSaliuIstorijaRepo : RepoBase
     public static void Insert(KovotojoSportoSaliuIstorija i)
     {
         var query = $@"INSERT INTO `{Config.TblPrefix}Kovotojo_sporto_saliu_istorija`
-                       (Narystes_Pradzia, Narystes_Pabaiga, Pastabos, Narystes_tipas, Statusas, fk_Kovotojai, fk_Kovinio_Sporto_sales)
-                       VALUES (?pr, ?pb, ?past, ?nt, ?st, ?kov, ?sale)";
+                       (id, Narystes_Pradzia, Narystes_Pabaiga, Pastabos, Narystes_tipas, Statusas, fk_Kovotojai, fk_Kovinio_Sporto_sales)
+                       VALUES (?id, ?pr, ?pb, ?past, ?nt, ?st, ?kov, ?sale)";
         Sql.Insert(query, args =>
         {
+            args.Add("?id", NextId("Kovotojo_sporto_saliu_istorija"));
             args.Add("?pr", i.NarystesPradzia);
             args.Add("?pb", i.NarystesPabaiga);
             args.Add("?past", i.Pastabos);

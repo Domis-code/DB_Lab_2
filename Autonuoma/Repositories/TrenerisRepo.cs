@@ -42,10 +42,11 @@ public class TrenerisRepo : RepoBase
     public static void Insert(Treneris t)
     {
         var query = $@"INSERT INTO `{Config.TblPrefix}Treneriai`
-		               (Vardas, Pavarde, Specializacija, Pareigos, Patirtis_metais, fk_Kovinio_Sporto_sales)
-		               VALUES (?vardas, ?pavarde, ?spec, ?par, ?pat, ?sale)";
+		               (id, Vardas, Pavarde, Specializacija, Pareigos, Patirtis_metais, fk_Kovinio_Sporto_sales)
+		               VALUES (?id, ?vardas, ?pavarde, ?spec, ?par, ?pat, ?sale)";
         Sql.Insert(query, args =>
         {
+            args.Add("?id", NextId("Treneriai"));
             args.Add("?vardas", t.Vardas);
             args.Add("?pavarde", t.Pavarde);
             args.Add("?spec", t.Specializacija);
