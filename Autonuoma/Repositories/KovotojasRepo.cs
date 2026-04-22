@@ -15,7 +15,7 @@ namespace Lab_2_DB.Repositories
                 t.Pavarde = dre.From<string>("Pavarde");
                 t.GimimoData = dre.From<DateTime>("Gimimo_metai");
                 t.SvorisKg = dre.From<decimal>("Svoris_kg");
-                t.UgisCm = dre.From<int>("Ugis_cm");
+                t.UgisCm = dre.From<int?>("Ugis_cm");
             });
         }
         public static Kovotojas Find(int id)
@@ -30,13 +30,13 @@ namespace Lab_2_DB.Repositories
                 t.Pavarde = dre.From<string>("Pavarde");
                 t.GimimoData = dre.From<DateTime>("Gimimo_metai");
                 t.SvorisKg = dre.From<decimal>("Svoris_kg");
-                t.UgisCm = dre.From<int>("Ugis_cm");
+                t.UgisCm = dre.From<int?>("Ugis_cm");
             });
         }
 
         public static void Insert(Kovotojas k)
         {
-            var query = $@"INSERT INTO`{Config.TblPrefix}Kovotojai`(Vardas,Pavarde,Gimimo_metai,Svoris_kg,Ugis_cm) VALUES(?vardas,?pavarde,?gm,?svoris,?ugis)";
+            var query = $@"INSERT INTO `{Config.TblPrefix}Kovotojai` (Vardas,Pavarde,Gimimo_metai,Svoris_kg,Ugis_cm) VALUES (?vardas,?pavarde,?gm,?svoris,?ugis)";
             Sql.Insert(query, args =>
             {
                 args.Add("?vardas", k.Vardas);
@@ -49,7 +49,7 @@ namespace Lab_2_DB.Repositories
 
         public static void Update(Kovotojas k)
         {
-            var query = $@"UPDATE`{Config.TblPrefix}Kovotojai` SET Vardas=?vardas,Pavarde=?pavarde,Gimimo_metai=?gm,Svoris_kg=?svoris,Ugis_cm=?ugis Where id=?id";
+            var query = $@"UPDATE `{Config.TblPrefix}Kovotojai` SET Vardas=?vardas,Pavarde=?pavarde,Gimimo_metai=?gm,Svoris_kg=?svoris,Ugis_cm=?ugis WHERE id=?id";
             Sql.Update(query, args =>
             {
                 args.Add("?vardas", k.Vardas);

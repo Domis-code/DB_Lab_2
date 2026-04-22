@@ -1,37 +1,44 @@
-﻿@model Lab_2_DB.Models.Kovotojas
+﻿@model Lab_2_DB.Models.SvorioKategorija
 @{
-    ViewBag.Title = "Naujas kovotojas";
+    ViewBag.Title = "Nauja svorio kategorija";
 }
 
-<h2>Naujas kovotojas</h2>
+<h2>Nauja svorio kategorija</h2>
 
 <form asp-action="Create" method="post">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
     <div class="form-group">
-        <label asp-for="Vardas"></label>
-        <input asp-for="Vardas" class="form-control" />
-        <span asp-validation-for="Vardas" class="text-danger"></span>
+        <label asp-for="SportoSaka"></label>
+        <input asp-for="SportoSaka" class="form-control" />
+        <span asp-validation-for="SportoSaka" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Pavarde"></label>
-        <input asp-for="Pavarde" class="form-control" />
-        <span asp-validation-for="Pavarde" class="text-danger"></span>
+        <label asp-for="KategorijosPavadinimas"></label>
+        <input asp-for="KategorijosPavadinimas" class="form-control" />
+        <span asp-validation-for="KategorijosPavadinimas" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="GimimoData"></label>
-        <input asp-for="GimimoData" type="date" class="form-control" />
-        <span asp-validation-for="GimimoData" class="text-danger"></span>
+        <label asp-for="MinKg"></label>
+        <input asp-for="MinKg" type="number" step="0.01" class="form-control" />
+        <span asp-validation-for="MinKg" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="SvorisKg"></label>
-        <input asp-for="SvorisKg" type="number" step="0.01" class="form-control" />
-        <span asp-validation-for="SvorisKg" class="text-danger"></span>
+        <label asp-for="MaxKg"></label>
+        <input asp-for="MaxKg" type="number" step="0.01" class="form-control" />
+        <span asp-validation-for="MaxKg" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="UgisCm"></label>
-        <input asp-for="UgisCm" type="number" class="form-control" />
-        <span asp-validation-for="UgisCm" class="text-danger"></span>
+        <label asp-for="AmziausGrupe"></label>
+        <input asp-for="AmziausGrupe" type="number" class="form-control" />
+        <span asp-validation-for="AmziausGrupe" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LytiesGrupe"></label>
+        <select asp-for="LytiesGrupe" asp-items="@Model.LytisList" class="form-control">
+            <option value="">-- pasirinkite lytį --</option>
+        </select>
+        <span asp-validation-for="LytiesGrupe" class="text-danger"></span>
     </div>
 
     <button type="submit" class="btn btn-primary">Sukurti</button>

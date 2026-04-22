@@ -78,4 +78,30 @@ public class TrenerisRepo : RepoBase
         var query = $@"DELETE FROM `{Config.TblPrefix}Treneriai` WHERE id=?id";
         Sql.Delete(query, args => { args.Add("?id", id); });
     }
+
+    public static List<Treneris> ListBySale(string salePk)
+    {
+        var query = $@"SELECT * FROM `{Config.TblPrefix}Treneriai` WHERE fk_Kovinio_Sporto_sales=?sale ORDER BY id ASC";
+        var drc = Sql.Query(query, args => { args.Add("?sale", salePk); });
+        return Sql.MapAll<Treneris>(drc, (dre, t) =>
+        {
+            t.Id = dre.From<int>("id");
+            t.Vardas = dre.From<string>("Vardas");
+            t.Pavarde = dre.From<string>("Pavarde");
+            t.Specializacija = dre.From<string>("Specializacija");
+            t.Pareigos = dre.From<string>("Pareigos");
+            t.PatirtisMetais = dre.From<int>("Patirtis_metais");
+            t.FkKovinioSportoSale = dre.From<string>("fk_Kovinio_Sporto_sales");
+        });
+    }
+
+    public static void AssignToSale(int trenerisId, string salePk)
+    {
+        var query = $@"UPDATE `{Config.TblPrefix}Treneriai` SET fk_Kovinio_Sporto_sales=?sale WHERE id=?id";
+        Sql.Update(query, args =>
+        {
+            args.Add("?sale", salePk);
+            args.Add("?id", trenerisId);
+        });
+    }
 }

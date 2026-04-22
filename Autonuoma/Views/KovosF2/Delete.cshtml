@@ -1,0 +1,16 @@
+@model Lab_2_DB.Models.KovosF2.KovaCE
+@{
+    ViewData["title"] = "Kovos įrašo šalinimas";
+}
+
+<h2>Šalinti kovą?</h2>
+<table class="table">
+    <tr><th>ID</th><td>@Model.Kova.Id</td></tr>
+    <tr><th>Kovos eilė</th><td>@Model.Kova.KovosEile</td></tr>
+    <tr><th>Kovos data</th><td>@Model.Kova.KovosLaikasData.ToString("yyyy-MM-dd HH:mm")</td></tr>
+</table>
+
+<form asp-action="DeleteConfirm" asp-route-id="@Model.Kova.Id" method="post">
+    <button type="submit" class="btn btn-danger">Taip, šalinti</button>
+    <a asp-action="Index" class="btn btn-secondary">Atšaukti</a>
+</form>

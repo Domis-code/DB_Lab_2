@@ -1,38 +1,45 @@
-﻿@model Lab_2_DB.Models.Renginys
+﻿@model Lab_2_DB.Models.SvorioKategorija
 @{
-    ViewBag.Title = "Redaguoti renginį";
+    ViewBag.Title = "Redaguoti kategoriją";
 }
 
-<h2>Redaguoti renginį</h2>
+<h2>Redaguoti svorio kategoriją</h2>
 
-<form asp-action="Edit" asp-route-id="@Model.OriginalPK" method="post">
+<form asp-action="Edit" asp-route-id="@Model.Id" method="post">
+    <input type="hidden" asp-for="Id" />
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
     <div class="form-group">
-        <label asp-for="RenginioPavadinimas"></label>
-        <input asp-for="RenginioPavadinimas" class="form-control" />
-        <span asp-validation-for="RenginioPavadinimas" class="text-danger"></span>
+        <label asp-for="SportoSaka"></label>
+        <input asp-for="SportoSaka" class="form-control" />
+        <span asp-validation-for="SportoSaka" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="RenginioData"></label>
-        <input asp-for="RenginioData" type="datetime-local" class="form-control"
-               value="@Model.RenginioData.ToString("yyyy-MM-ddTHH:mm")" />
-        <span asp-validation-for="RenginioData" class="text-danger"></span>
+        <label asp-for="KategorijosPavadinimas"></label>
+        <input asp-for="KategorijosPavadinimas" class="form-control" />
+        <span asp-validation-for="KategorijosPavadinimas" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="VietaAdresas"></label>
-        <input asp-for="VietaAdresas" class="form-control" />
-        <span asp-validation-for="VietaAdresas" class="text-danger"></span>
+        <label asp-for="MinKg"></label>
+        <input asp-for="MinKg" type="number" step="0.01" class="form-control" />
+        <span asp-validation-for="MinKg" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Miestas"></label>
-        <input asp-for="Miestas" class="form-control" />
-        <span asp-validation-for="Miestas" class="text-danger"></span>
+        <label asp-for="MaxKg"></label>
+        <input asp-for="MaxKg" type="number" step="0.01" class="form-control" />
+        <span asp-validation-for="MaxKg" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Organizatorius"></label>
-        <input asp-for="Organizatorius" class="form-control" />
-        <span asp-validation-for="Organizatorius" class="text-danger"></span>
+        <label asp-for="AmziausGrupe"></label>
+        <input asp-for="AmziausGrupe" type="number" class="form-control" />
+        <span asp-validation-for="AmziausGrupe" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LytiesGrupe"></label>
+        <select asp-for="LytiesGrupe" asp-items="@Model.LytisList" class="form-control">
+            <option value="">-- pasirinkite lytį --</option>
+        </select>
+        <span asp-validation-for="LytiesGrupe" class="text-danger"></span>
     </div>
 
     <button type="submit" class="btn btn-primary">Išsaugoti</button>
