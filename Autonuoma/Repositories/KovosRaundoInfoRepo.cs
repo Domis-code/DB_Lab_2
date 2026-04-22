@@ -7,7 +7,14 @@ public class KovosRaundoInfoRepo : RepoBase
 {
     public static List<KovosRaundoInfo> List()
     {
-        var query = $@"SELECT * FROM `{Config.TblPrefix}Kovos_raundo_info` ORDER BY id DESC";
+        var query = $@"
+            SELECT kri.*,
+                   CONCAT('Kova #', kd.id, ' (', kd.fk_Renginys, ')') AS KovosPavadinimas,
+                   kpt.name AS RaundoPabaigaPavadinimas
+            FROM `{Config.TblPrefix}Kovos_raundo_info` kri
+            LEFT JOIN `{Config.TblPrefix}Kovos_duomenys` kd ON kd.id = kri.fk_Kovos_duomenys
+            LEFT JOIN `{Config.TblPrefix}Kovos_Pabaigos_Tipai` kpt ON kpt.id = kri.Raundo_Pabaiga
+            ORDER BY kri.id DESC";
         var drc = Sql.Query(query);
         return Sql.MapAll<KovosRaundoInfo>(drc, (dre, t) =>
         {
@@ -17,7 +24,9 @@ public class KovosRaundoInfoRepo : RepoBase
             t.RaundoTrukmeSek = dre.From<int>("Raundo_Trukme_sek");
             t.Pastabos = dre.From<string?>("Pastabos");
             t.RaundoPabaiga = dre.From<int>("Raundo_Pabaiga");
+            t.RaundoPabaigaPavadinimas = dre.From<string?>("RaundoPabaigaPavadinimas");
             t.FkKovosDuomenys = dre.From<int>("fk_Kovos_duomenys");
+            t.KovosPavadinimas = dre.From<string?>("KovosPavadinimas");
         });
     }
 
@@ -40,11 +49,10 @@ public class KovosRaundoInfoRepo : RepoBase
     public static void Insert(KovosRaundoInfo r)
     {
         var query = $@"INSERT INTO `{Config.TblPrefix}Kovos_raundo_info`
-                       (id, Raundo_Numeris, Raundo_Trukme_min, Raundo_Trukme_sek, Pastabos, Raundo_Pabaiga, fk_Kovos_duomenys)
-                       VALUES (?id, ?nr, ?min, ?sek, ?past, ?pb, ?kova)";
+                       (Raundo_Numeris, Raundo_Trukme_min, Raundo_Trukme_sek, Pastabos, Raundo_Pabaiga, fk_Kovos_duomenys)
+                       VALUES (?nr, ?min, ?sek, ?past, ?pb, ?kova)";
         Sql.Insert(query, args =>
         {
-            args.Add("?id", NextId("Kovos_raundo_info"));
             args.Add("?nr", r.RaundoNumeris);
             args.Add("?min", r.RaundoTrukmeMin);
             args.Add("?sek", r.RaundoTrukmeSek);
@@ -80,13 +88,6 @@ public class KovosRaundoInfoRepo : RepoBase
 
     public static List<KovosPabaigosTipas> ListRaundoPabaigosTipai() => LookUpLentelesRepo.ListKovosPabaigosTipai();
     public static List<KovosDuomenys> ListKovos() => KovosDuomenysRepo.List();
-
-    private static int NextId(string tableName)
-    {
-        var query = $@"SELECT COALESCE(MAX(id), 0) + 1 AS next_id FROM `{Config.TblPrefix}{tableName}`";
-        var rows = Sql.Query(query);
-        return Convert.ToInt32(rows[0]["next_id"]);
-    }
 }
 
 
