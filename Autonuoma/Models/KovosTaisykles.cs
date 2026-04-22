@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
-namespace Autonuoma.Models
+namespace Lab_2_DB.Models
 {
     public class KovosTaisykles
     {
@@ -32,3 +32,4 @@ namespace Autonuoma.Models
         public IList<SelectListItem> TaskuSistemaList { get; set; } = new List<SelectListItem>();
     }
 }
+

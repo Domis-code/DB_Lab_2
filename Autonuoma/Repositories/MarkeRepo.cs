@@ -1,6 +1,6 @@
-﻿namespace Org.Ktu.Isk.P175B602.Autonuoma.Repositories;
+﻿namespace Lab_2_DB.Repositories;
 
-using Org.Ktu.Isk.P175B602.Autonuoma.Models;
+using Lab_2_DB.Models;
 
 
 public class MarkeRepo : RepoBase
@@ -67,3 +67,4 @@ public class MarkeRepo : RepoBase
 		});			
 	}
 }
+

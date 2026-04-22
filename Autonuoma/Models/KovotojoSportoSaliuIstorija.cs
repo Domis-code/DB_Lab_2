@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Autonuoma.Models
+namespace Lab_2_DB.Models
 {
     public class KovotojoSportoSaliuIstorija
     {
@@ -38,3 +38,4 @@ namespace Autonuoma.Models
         public string FkKovinioSportoSales { get; set; } = null!;
     }
 }
+

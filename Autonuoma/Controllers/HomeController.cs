@@ -1,4 +1,4 @@
-﻿namespace Org.Ktu.Isk.P175B602.Autonuoma.Controllers;
+﻿namespace Lab_2_DB.Controllers;
 
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,3 +19,4 @@ public class HomeController : ControllerBase
 		return View();
 	}
 }
+

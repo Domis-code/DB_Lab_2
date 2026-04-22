@@ -1,6 +1,6 @@
-﻿namespace Org.Ktu.Isk.P175B602.Autonuoma.Repositories;
+﻿namespace Lab_2_DB.Repositories;
 
-using Org.Ktu.Isk.P175B602.Autonuoma.Models.Modelis;
+using Lab_2_DB.Models.Modelis;
 
 
 public class ModelisRepo : RepoBase
@@ -137,3 +137,4 @@ public class ModelisRepo : RepoBase
 		});
 	}
 }
+

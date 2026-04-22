@@ -1,4 +1,4 @@
-namespace Org.Ktu.Isk.P175B602.Autonuoma;
+﻿namespace Lab_2_DB;
 
 
 /// <summary>
@@ -74,3 +74,4 @@ public class Config
 		}
 	}
 }
+

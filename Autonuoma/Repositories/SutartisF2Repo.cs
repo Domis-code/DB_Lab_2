@@ -1,8 +1,8 @@
-﻿namespace Org.Ktu.Isk.P175B602.Autonuoma.Repositories;
+﻿namespace Lab_2_DB.Repositories;
 
 using Newtonsoft.Json;
 
-using Org.Ktu.Isk.P175B602.Autonuoma.Models.SutartisF2;
+using Lab_2_DB.Models.SutartisF2;
 
 
 /// <summary>

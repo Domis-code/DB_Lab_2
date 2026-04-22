@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
-namespace Autonuoma.Models
+namespace Lab_2_DB.Models
 {
     public class SvorioKategorija
     {
@@ -40,3 +40,4 @@ namespace Autonuoma.Models
         public IList<SelectListItem> LytisList { get; set; } = new List<SelectListItem>();
     }
 }
+

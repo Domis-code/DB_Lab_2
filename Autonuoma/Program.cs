@@ -1,4 +1,4 @@
-namespace Org.Ktu.Isk.P175B602.Autonuoma;
+﻿namespace Lab_2_DB;
 
 using System.Collections.Concurrent;
 using NLog;
@@ -119,3 +119,4 @@ public class Program {
 		}
 	}
 }
+

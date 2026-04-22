@@ -1,8 +1,8 @@
-﻿namespace Org.Ktu.Isk.P175B602.Autonuoma.Repositories;
+﻿namespace Lab_2_DB.Repositories;
 
-using LateContractsReport = Org.Ktu.Isk.P175B602.Autonuoma.Models.LateContractsReport;
-using ContractsReport = Org.Ktu.Isk.P175B602.Autonuoma.Models.ContractsReport;
-using ServicesReport = Org.Ktu.Isk.P175B602.Autonuoma.Models.ServicesReport;
+using LateContractsReport = Lab_2_DB.Models.LateContractsReport;
+using ContractsReport = Lab_2_DB.Models.ContractsReport;
+using ServicesReport = Lab_2_DB.Models.ServicesReport;
 
 
 /// <summary>
@@ -191,3 +191,4 @@ public class AtaskaitaRepo : RepoBase
 		return result;
 	}
 }
+

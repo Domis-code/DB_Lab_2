@@ -1,4 +1,4 @@
-namespace Org.Ktu.Isk.P175B602.Autonuoma.Controllers;
+﻿namespace Lab_2_DB.Controllers;
 
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;

@@ -1,6 +1,6 @@
-﻿namespace Org.Ktu.Isk.P175B602.Autonuoma.Repositories;
+﻿namespace Lab_2_DB.Repositories;
 
-using Org.Ktu.Isk.P175B602.Autonuoma.Models.Paslauga;
+using Lab_2_DB.Models.Paslauga;
 
 
 /// <summary>
@@ -87,3 +87,4 @@ public class PaslaugaRepo : RepoBase
 		});
 	}
 }
+

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Autonuoma.Models
+namespace Lab_2_DB.Models
 {
     public class Kovotojas
     {
@@ -33,3 +33,4 @@ namespace Autonuoma.Models
         public int? UgisCm { get; set; }
     }
 }
+
