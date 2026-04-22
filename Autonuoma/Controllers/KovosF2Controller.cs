@@ -49,6 +49,7 @@ public class KovosF2Controller : ControllerBase
 
         if (save != null)
         {
+            ValidateExactlyTwoFighters(ce);
             if (ModelState.IsValid)
             {
                 var newId = KovosF2Repo.InsertKova(ce);
@@ -98,6 +99,7 @@ public class KovosF2Controller : ControllerBase
 
         if (save != null)
         {
+            ValidateExactlyTwoFighters(ce);
             if (ModelState.IsValid)
             {
                 KovosF2Repo.UpdateKova(ce);
@@ -154,6 +156,23 @@ public class KovosF2Controller : ControllerBase
         ce.Lists.Rezultatai = LookUpLentelesRepo.ListLaimejimoRezultatas()
             .Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Name })
             .ToList();
+    }
+
+    private void ValidateExactlyTwoFighters(KovaCE ce)
+    {
+        if (ce.KovotojuDalyvavimai.Count != 2)
+        {
+            ModelState.AddModelError(string.Empty, "Kovą galima išsaugoti tik tada, kai detalėse yra lygiai 2 kovotojai.");
+            return;
+        }
+
+        var distinctFighters = ce.KovotojuDalyvavimai
+            .Select(x => x.FkKovotojai)
+            .Distinct()
+            .Count();
+
+        if (distinctFighters != 2)
+            ModelState.AddModelError(string.Empty, "Kovotojai turi būti skirtingi.");
     }
 }
 

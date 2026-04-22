@@ -14,7 +14,7 @@ public class KovosF2Repo : RepoBase
                    ks.name AS Statusas,
                    kd.fk_Renginys AS Renginys
             FROM `{Config.TblPrefix}Kovos_duomenys` kd
-            LEFT JOIN `{Config.TblPrefix}Kovos_statusas` ks ON ks.id = kd.Kovos_statutas
+            LEFT JOIN `{Config.TblPrefix}Kovos_Statusas` ks ON ks.id = kd.Kovos_statutas
             ORDER BY kd.id DESC";
 
         var drc = Sql.Query(query);

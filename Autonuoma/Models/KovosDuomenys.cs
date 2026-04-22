@@ -28,6 +28,7 @@ namespace Lab_2_DB.Models
         [Display(Name = "Kovos statusas")]
         [Required(ErrorMessage = "Pasirinkite kovos statusą")]
         public int KovosStatutas { get; set; }
+        public string? KovosStatutasPavadinimas { get; set; }
 
         [Display(Name = "Svorio kategorija")]
         [Required(ErrorMessage = "Pasirinkite svorio kategoriją")]

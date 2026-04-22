@@ -7,7 +7,12 @@ public class KovosDuomenysRepo : RepoBase
 {
     public static List<KovosDuomenys> List()
     {
-        var query = $@"SELECT * FROM `{Config.TblPrefix}Kovos_duomenys` ORDER BY id DESC";
+        var query = $@"
+            SELECT kd.*,
+                   ks.name AS KovosStatutasPavadinimas
+            FROM `{Config.TblPrefix}Kovos_duomenys` kd
+            LEFT JOIN `{Config.TblPrefix}Kovos_Statusas` ks ON ks.id = kd.Kovos_statutas
+            ORDER BY kd.id DESC";
         var drc = Sql.Query(query);
         return Sql.MapAll<KovosDuomenys>(drc, (dre, t) =>
         {
@@ -17,6 +22,7 @@ public class KovosDuomenysRepo : RepoBase
             t.Pastabos = dre.From<string?>("Pastabos");
             t.KovosLaikasData = dre.From<DateTime>("Kovos_laikas_data");
             t.KovosStatutas = dre.From<int>("Kovos_statutas");
+            t.KovosStatutasPavadinimas = dre.From<string?>("KovosStatutasPavadinimas");
             t.FkSvorioKategorija = dre.From<int>("fk_Svorio_Kategorija");
             t.FkRenginys = dre.From<string>("fk_Renginys");
             t.FkKovosTaisykles = dre.From<string>("fk_Kovos_Taisykles");

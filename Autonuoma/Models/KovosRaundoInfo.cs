@@ -30,10 +30,12 @@ namespace Lab_2_DB.Models
         [Display(Name = "Raundo pabaiga")]
         [Required(ErrorMessage = "Pasirinkite raundo pabaigos tipą")]
         public int RaundoPabaiga { get; set; }
+        public string? RaundoPabaigaPavadinimas { get; set; }
 
         [Display(Name = "Kova")]
         [Required]
         public int FkKovosDuomenys { get; set; }
+        public string? KovosPavadinimas { get; set; }
 
         public IList<SelectListItem> RaundoPabaigosTipaiList { get; set; } = new List<SelectListItem>();
         public IList<SelectListItem> KovosDuomenysList { get; set; } = new List<SelectListItem>();

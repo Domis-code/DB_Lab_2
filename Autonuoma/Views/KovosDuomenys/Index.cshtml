@@ -21,7 +21,7 @@
             <td>@k.KovosEile</td>
             <td>@k.KovosLaikasData.ToString("yyyy-MM-dd HH:mm")</td>
             <td>@(k.TitulineKova ? "Taip" : "Ne")</td>
-            <td>@k.KovosStatutas</td>
+            <td>@(k.KovosStatutasPavadinimas ?? k.KovosStatutas.ToString())</td>
             <td>
                 <a asp-action="Edit" asp-route-id="@k.Id">Redaguoti</a> |
                 <a asp-action="Delete" asp-route-id="@k.Id">Šalinti</a>
