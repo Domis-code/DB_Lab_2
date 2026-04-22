@@ -1,12 +1,12 @@
-﻿namespace Org.Ktu.Isk.P175B602.Autonuoma.Controllers;
+﻿namespace Lab_2_DB.Controllers;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 using Newtonsoft.Json;
 
-using Org.Ktu.Isk.P175B602.Autonuoma.Repositories;
-using Org.Ktu.Isk.P175B602.Autonuoma.Models.SutartisF2;
+using Lab_2_DB.Repositories;
+using Lab_2_DB.Models.SutartisF2;
 
 
 /// <summary>
@@ -413,3 +413,4 @@ public class SutartisF2Controller : ControllerBase
 		}
 	}
 }
+

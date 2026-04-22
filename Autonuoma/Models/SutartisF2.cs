@@ -1,4 +1,4 @@
-﻿namespace Org.Ktu.Isk.P175B602.Autonuoma.Models.SutartisF2;
+﻿namespace Lab_2_DB.Models.SutartisF2;
 
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.Rendering;

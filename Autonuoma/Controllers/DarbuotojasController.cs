@@ -1,9 +1,9 @@
-﻿namespace Org.Ktu.Isk.P175B602.Autonuoma.Controllers;
+﻿namespace Lab_2_DB.Controllers;
 
 using Microsoft.AspNetCore.Mvc;
 
-using Org.Ktu.Isk.P175B602.Autonuoma.Repositories;
-using Org.Ktu.Isk.P175B602.Autonuoma.Models;
+using Lab_2_DB.Repositories;
+using Lab_2_DB.Models;
 
 
 /// <summary>
@@ -131,3 +131,4 @@ public class DarbuotojasController : ControllerBase
 		}
 	}
 }
+

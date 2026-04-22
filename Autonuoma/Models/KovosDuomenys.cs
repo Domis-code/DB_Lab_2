@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Autonuoma.Models
+namespace Lab_2_DB.Models
 {
     public class KovosDuomenys
     {
@@ -42,3 +42,4 @@ namespace Autonuoma.Models
 
     }
 }
+

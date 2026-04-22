@@ -1,12 +1,12 @@
-﻿namespace Org.Ktu.Isk.P175B602.Autonuoma.Controllers;
+﻿namespace Lab_2_DB.Controllers;
 
 using Microsoft.AspNetCore.Mvc;
 
-using Org.Ktu.Isk.P175B602.Autonuoma.Repositories;
+using Lab_2_DB.Repositories;
 
-using LateContractsReport = Org.Ktu.Isk.P175B602.Autonuoma.Models.LateContractsReport;
-using ContractsReport = Org.Ktu.Isk.P175B602.Autonuoma.Models.ContractsReport;
-using ServicesReport = Org.Ktu.Isk.P175B602.Autonuoma.Models.ServicesReport;
+using LateContractsReport = Lab_2_DB.Models.LateContractsReport;
+using ContractsReport = Lab_2_DB.Models.ContractsReport;
+using ServicesReport = Lab_2_DB.Models.ServicesReport;
 
 
 /// <summary>
@@ -74,3 +74,4 @@ public class ReportsController : ControllerBase
 		return View(report);
 	}
 }
+

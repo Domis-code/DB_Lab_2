@@ -1,10 +1,10 @@
-﻿namespace Org.Ktu.Isk.P175B602.Autonuoma.Controllers;
+﻿namespace Lab_2_DB.Controllers;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-using Org.Ktu.Isk.P175B602.Autonuoma.Repositories;
-using Org.Ktu.Isk.P175B602.Autonuoma.Models.Modelis;
+using Lab_2_DB.Repositories;
+using Lab_2_DB.Models.Modelis;
 
 
 /// <summary>
@@ -153,3 +153,4 @@ public class ModelisController : ControllerBase
 			.ToList();
 	}
 }
+
