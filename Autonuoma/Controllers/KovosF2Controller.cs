@@ -134,15 +134,27 @@ public class KovosF2Controller : ControllerBase
             .ToList();
 
         ce.Lists.SvorioKategorijos = SvorioKategorijaRepo.List()
-            .Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.KategorijosPavadinimas })
+            .Select(x => new SelectListItem
+            {
+                Value = x.Id.ToString(),
+                Text = $"{x.SportoSaka} - {x.KategorijosPavadinimas} ({x.MinKg}-{x.MaxKg} kg)"
+            })
             .ToList();
 
         ce.Lists.Renginiai = RenginysRepo.List()
-            .Select(x => new SelectListItem { Value = x.RenginioPavadinimas, Text = x.RenginioPavadinimas })
+            .Select(x => new SelectListItem
+            {
+                Value = x.RenginioPavadinimas,
+                Text = $"{x.RenginioPavadinimas} ({x.RenginioData:yyyy-MM-dd}, {x.Miestas})"
+            })
             .ToList();
 
         ce.Lists.KovosTaisykles = KovosTaisyklesRepo.List()
-            .Select(x => new SelectListItem { Value = x.TaisykliuPavadinimas, Text = x.TaisykliuPavadinimas })
+            .Select(x => new SelectListItem
+            {
+                Value = x.TaisykliuPavadinimas,
+                Text = $"{x.TaisykliuPavadinimas} ({x.RaunduSkaicius}x{x.RaundoTrukmeMin} min)"
+            })
             .ToList();
 
         ce.Lists.Kovotojai = KovotojasRepo.List()
