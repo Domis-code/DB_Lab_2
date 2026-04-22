@@ -1,0 +1,40 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Autonuoma.Models
+{
+    public class KovotojoSportoSaliuIstorija
+    {
+        [Display(Name = "ID")]
+        public int Id { get; set; }
+
+        [Display(Name = "Narystės pradžia")]
+        [Required(ErrorMessage = "Įveskite narystės pradžios datą")]
+        [DataType(DataType.Date)]
+        public DateTime NarystesPradzia { get; set; }
+
+        [Display(Name = "Narystės pabaiga")]
+        [Required(ErrorMessage = "Įveskite narystės pabaigos datą")]
+        [DataType(DataType.Date)]
+        public DateTime NarystesPabaiga { get; set; }
+
+        [Display(Name = "Pastabos")]
+        [StringLength(100)]
+        public string? Pastabos { get; set; }
+
+        [Display(Name = "Narystės tipas")]
+        [Required(ErrorMessage = "Pasirinkite narystės tipą")]
+        public int NarystesTipas { get; set; }
+
+        [Display(Name = "Statusas")]
+        public int? Statusas { get; set; }
+
+        [Display(Name = "Kovotojas")]
+        [Required(ErrorMessage = "Pasirinkite kovotoją")]
+        public int FkKovotojai { get; set; }
+
+        [Display(Name = "Sporto salė")]
+        [Required(ErrorMessage = "Pasirinkite sporto salę")]
+        [StringLength(255)]
+        public string FkKovinioSportoSales { get; set; } = null!;
+    }
+}

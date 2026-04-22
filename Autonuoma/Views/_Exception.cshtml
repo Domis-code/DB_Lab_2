@@ -1,0 +1,21 @@
+@* this will also be used as page title in main layout *@
+@{ ViewData["title"] = "Unhandled exception was caught in controller action."; }
+
+@* content header *@
+<div class="main-content-header">
+	<span class="title">@ViewData["title"]</span>
+</div>
+
+@* content itself *@
+<div class="p-3">
+    <p>Įvyko klaida vykdant kontrolerio veiksmą. Dažniausiai priežastis yra neteisinga DB konfigūracija (<code>DbConnStr</code> arba <code>TblPrefix</code>).</p>
+    <p><strong>Klaidos tipas:</strong> @ViewData["exception-type"]</p>
+    <p><strong>Klaidos žinutė:</strong> @ViewData["exception-message"]</p>
+    <p>Patikrinkite:</p>
+    <ul>
+        <li>Ar DB pavadinimas <code>Initial Catalog</code> egzistuoja.</li>
+        <li>Ar <code>Data Source</code>, <code>port</code>, <code>User Id</code>, <code>Password</code> yra teisingi.</li>
+        <li>Ar <code>TblPrefix</code> atitinka realius lentelių pavadinimus DB.</li>
+    </ul>
+    <p>SQL užklausas vis tiek galite pamatyti naršyklės konsolėje.</p>
+</div>
