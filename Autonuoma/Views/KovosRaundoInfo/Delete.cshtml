@@ -1,4 +1,4 @@
-@model Lab_2_DB.Models.KovosRaundoInfo
+﻿@model Lab_2_DB.Models.KovosRaundoInfo
 @{
     ViewBag.Title = "Šalinti raundo įrašą";
     bool notPermitted = ViewData["deletionNotPermitted"] as bool? ?? false;
@@ -25,3 +25,6 @@ else
 {
     <a class="btn btn-secondary" asp-action="Index">Grįžti</a>
 }
+
+
+

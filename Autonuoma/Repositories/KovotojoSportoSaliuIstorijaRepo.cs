@@ -1,4 +1,4 @@
-namespace Lab_2_DB.Repositories;
+﻿namespace Lab_2_DB.Repositories;
 
 using Lab_2_DB.Models;
 
@@ -6,7 +6,18 @@ public class KovotojoSportoSaliuIstorijaRepo : RepoBase
 {
     public static List<KovotojoSportoSaliuIstorija> List()
     {
-        var query = $@"SELECT * FROM `{Config.TblPrefix}Kovotojo_sporto_saliu_istorija` ORDER BY id DESC";
+        var query = $@"
+            SELECT ksi.*,
+                   CONCAT(k.Vardas, ' ', k.Pavarde) AS KovotojoVardasPavarde,
+                   s.Klubo_Pavadinimas AS SportoSalesPavadinimas,
+                   nt.name AS NarystesTipoPavadinimas,
+                   st.name AS StatusoPavadinimas
+            FROM `{Config.TblPrefix}Kovotojo_sporto_saliu_istorija` ksi
+            LEFT JOIN `{Config.TblPrefix}Kovotojai` k ON k.id = ksi.fk_Kovotojai
+            LEFT JOIN `{Config.TblPrefix}Kovinio_Sporto_sales` s ON s.Klubo_Pavadinimas = ksi.fk_Kovinio_Sporto_sales
+            LEFT JOIN `{Config.TblPrefix}Narystes_tipai` nt ON nt.id = ksi.Narystes_tipas
+            LEFT JOIN `{Config.TblPrefix}Statuso_tipai` st ON st.id = ksi.Statusas
+            ORDER BY ksi.id DESC";
         var drc = Sql.Query(query);
         return Sql.MapAll<KovotojoSportoSaliuIstorija>(drc, (dre, t) =>
         {
@@ -18,6 +29,10 @@ public class KovotojoSportoSaliuIstorijaRepo : RepoBase
             t.Statusas = dre.From<int?>("Statusas");
             t.FkKovotojai = dre.From<int>("fk_Kovotojai");
             t.FkKovinioSportoSales = dre.From<string>("fk_Kovinio_Sporto_sales");
+            t.KovotojoVardasPavarde = dre.From<string?>("KovotojoVardasPavarde");
+            t.SportoSalesPavadinimas = dre.From<string?>("SportoSalesPavadinimas");
+            t.NarystesTipoPavadinimas = dre.From<string?>("NarystesTipoPavadinimas");
+            t.StatusoPavadinimas = dre.From<string?>("StatusoPavadinimas");
         });
     }
 
@@ -93,3 +108,6 @@ public class KovotojoSportoSaliuIstorijaRepo : RepoBase
         return Convert.ToInt32(rows[0]["next_id"]);
     }
 }
+
+
+

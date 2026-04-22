@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace Lab_2_DB.Controllers;
 
@@ -11,3 +11,6 @@ public class HomeController : ControllerBase
         return View();
     }
 }
+
+
+

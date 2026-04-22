@@ -1,4 +1,4 @@
-namespace Lab_2_DB.Controllers;
+﻿namespace Lab_2_DB.Controllers;
 
 using Lab_2_DB.Models.KovosF2;
 using Lab_2_DB.Repositories;
@@ -156,3 +156,6 @@ public class KovosF2Controller : ControllerBase
             .ToList();
     }
 }
+
+
+

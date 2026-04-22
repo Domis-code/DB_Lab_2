@@ -1,4 +1,4 @@
-namespace Lab_2_DB.Controllers;
+﻿namespace Lab_2_DB.Controllers;
  
 using Microsoft.AspNetCore.Mvc;
 using Lab_2_DB.Models;
@@ -83,3 +83,6 @@ public class RenginysController : ControllerBase
         }
     }
 }
+
+
+

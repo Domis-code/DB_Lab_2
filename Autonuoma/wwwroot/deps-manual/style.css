@@ -1,1 +1,28 @@
-/*place your personal CSS rules here*/ 
+.dashboard-header {
+  margin-bottom: 1rem;
+}
+
+.dashboard-header h2 {
+  margin-bottom: 0.25rem;
+  font-weight: 700;
+}
+
+.dashboard-header p {
+  color: #6c757d;
+  margin-bottom: 0;
+}
+
+.dashboard-card {
+  border: 1px solid #e9ecef;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.1rem 0.35rem rgba(0, 0, 0, 0.06);
+}
+
+.dashboard-card .card-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.dashboard-card .card-text {
+  min-height: 48px;
+}

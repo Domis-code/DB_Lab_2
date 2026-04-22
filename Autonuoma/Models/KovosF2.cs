@@ -1,4 +1,4 @@
-namespace Lab_2_DB.Models.KovosF2;
+﻿namespace Lab_2_DB.Models.KovosF2;
 
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -74,7 +74,7 @@ public class KovaCE
 
         [Display(Name = "Baigties raundas")]
         [Required]
-        [Range(1, 20)]
+        [Range(0, 20)]
         public int BaigtiesRaundas { get; set; }
 
         [Display(Name = "Baigties laikas (min)")]
@@ -111,3 +111,6 @@ public class KovaCE
     public IList<KovotojoDalyvavimasM> KovotojuDalyvavimai { get; set; } = new List<KovotojoDalyvavimasM>();
     public ListsM Lists { get; set; } = new ListsM();
 }
+
+
+
