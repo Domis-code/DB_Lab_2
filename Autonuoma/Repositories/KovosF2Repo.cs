@@ -1,4 +1,4 @@
-namespace Lab_2_DB.Repositories;
+﻿namespace Lab_2_DB.Repositories;
 
 using Lab_2_DB.Models.KovosF2;
 
@@ -58,16 +58,14 @@ public class KovosF2Repo : RepoBase
 
     public static int InsertKova(KovaCE ce)
     {
-        var newId = NextId("Kovos_duomenys");
         var query = $@"
             INSERT INTO `{Config.TblPrefix}Kovos_duomenys`
-            (id, Kovos_Eile, Tituline_kova, Pastabos, Kovos_laikas_data, Kovos_statutas, fk_Svorio_Kategorija, fk_Renginys, fk_Kovos_Taisykles)
+            (Kovos_Eile, Tituline_kova, Pastabos, Kovos_laikas_data, Kovos_statutas, fk_Svorio_Kategorija, fk_Renginys, fk_Kovos_Taisykles)
             VALUES
-            (?id, ?eile, ?tituline, ?past, ?laikas, ?statusas, ?svoris, ?renginys, ?taisykles)";
+            (?eile, ?tituline, ?past, ?laikas, ?statusas, ?svoris, ?renginys, ?taisykles)";
 
-        Sql.Insert(query, args =>
+        var insertedId = Sql.Insert(query, args =>
         {
-            args.Add("?id", newId);
             args.Add("?eile", ce.Kova.KovosEile);
             args.Add("?tituline", ce.Kova.TitulineKova);
             args.Add("?past", ce.Kova.Pastabos);
@@ -78,7 +76,7 @@ public class KovosF2Repo : RepoBase
             args.Add("?taisykles", ce.Kova.FkKovosTaisykles);
         });
 
-        return newId;
+        return Convert.ToInt32(insertedId);
     }
 
     public static void UpdateKova(KovaCE ce)
@@ -120,7 +118,7 @@ public class KovosF2Repo : RepoBase
     {
         var query = $@"
             SELECT id, Baigties_raundas, Baigties_laikas_min, Baigties_laikas_sek, Baigties_Budas, Rezultatas, fk_Kovotojai
-            FROM `{Config.TblPrefix}Kovotojo_dalyvavimas`
+            FROM `{Config.TblPrefix}Kovotojo_Dalyvavimas`
             WHERE fk_Kovos_duomenys=?id
             ORDER BY id";
 
@@ -150,16 +148,14 @@ public class KovosF2Repo : RepoBase
 
     private static void InsertKovotojoDalyvavimas(int kovaId, KovaCE.KovotojoDalyvavimasM row)
     {
-        var newId = NextId("Kovotojo_dalyvavimas");
         var query = $@"
-            INSERT INTO `{Config.TblPrefix}Kovotojo_dalyvavimas`
-            (id, Baigties_raundas, Baigties_laikas_min, Baigties_laikas_sek, Baigties_Budas, Rezultatas, fk_Kovos_duomenys, fk_Kovotojai)
+            INSERT INTO `{Config.TblPrefix}Kovotojo_Dalyvavimas`
+            (Baigties_raundas, Baigties_laikas_min, Baigties_laikas_sek, Baigties_Budas, Rezultatas, fk_Kovos_duomenys, fk_Kovotojai)
             VALUES
-            (?id, ?raundas, ?min, ?sek, ?budas, ?rez, ?kova, ?kovotojas)";
+            (?raundas, ?min, ?sek, ?budas, ?rez, ?kova, ?kovotojas)";
 
         Sql.Insert(query, args =>
         {
-            args.Add("?id", newId);
             args.Add("?raundas", row.BaigtiesRaundas);
             args.Add("?min", row.BaigtiesLaikasMin);
             args.Add("?sek", row.BaigtiesLaikasSek);
@@ -172,14 +168,10 @@ public class KovosF2Repo : RepoBase
 
     private static void DeleteKovotojoDalyvavimai(int kovaId)
     {
-        var query = $@"DELETE FROM `{Config.TblPrefix}Kovotojo_dalyvavimas` WHERE fk_Kovos_duomenys=?id";
+        var query = $@"DELETE FROM `{Config.TblPrefix}Kovotojo_Dalyvavimas` WHERE fk_Kovos_duomenys=?id";
         Sql.Delete(query, args => args.Add("?id", kovaId));
     }
-
-    private static int NextId(string tableName)
-    {
-        var query = $@"SELECT COALESCE(MAX(id), 0) + 1 AS next_id FROM `{Config.TblPrefix}{tableName}`";
-        var rows = Sql.Query(query);
-        return Convert.ToInt32(rows[0]["next_id"]);
-    }
 }
+
+
+

@@ -38,10 +38,18 @@ namespace Lab_2_DB.Models
         [StringLength(255)]
         public string FkKovinioSportoSales { get; set; } = null!;
 
+        public string? KovotojoVardasPavarde { get; set; }
+        public string? SportoSalesPavadinimas { get; set; }
+        public string? NarystesTipoPavadinimas { get; set; }
+        public string? StatusoPavadinimas { get; set; }
+
         public IList<SelectListItem> NarystesTipaiList { get; set; } = new List<SelectListItem>();
         public IList<SelectListItem> StatusaiList { get; set; } = new List<SelectListItem>();
         public IList<SelectListItem> KovotojaiList { get; set; } = new List<SelectListItem>();
         public IList<SelectListItem> SportoSalesList { get; set; } = new List<SelectListItem>();
     }
 }
+
+
+
 

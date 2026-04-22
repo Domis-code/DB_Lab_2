@@ -91,3 +91,5 @@ public class KovosTaisyklesRepo : RepoBase
         Sql.Delete(query, args => { args.Add("?pk", pk); });
     }
 }
+
+

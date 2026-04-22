@@ -1,4 +1,4 @@
-namespace Lab_2_DB.Repositories;
+﻿namespace Lab_2_DB.Repositories;
 
 using Lab_2_DB.Models;
 using static Lab_2_DB.Models.LookUpLenteles;
@@ -88,3 +88,6 @@ public class KovosRaundoInfoRepo : RepoBase
         return Convert.ToInt32(rows[0]["next_id"]);
     }
 }
+
+
+

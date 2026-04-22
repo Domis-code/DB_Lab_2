@@ -75,3 +75,5 @@ public class KovinioSportoSaleRepo : RepoBase
         Sql.Delete(query, args => { args.Add("?pk", pk); });
     }
 }
+
+

@@ -79,3 +79,5 @@ public class SvorioKategorijaRepo : RepoBase
         Sql.Delete(query, args => { args.Add("?id", id); });
     }
 }
+
+

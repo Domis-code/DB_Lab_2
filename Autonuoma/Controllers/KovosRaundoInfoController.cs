@@ -1,4 +1,4 @@
-namespace Lab_2_DB.Controllers;
+﻿namespace Lab_2_DB.Controllers;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -86,3 +86,6 @@ public class KovosRaundoInfoController : ControllerBase
         }
     }
 }
+
+
+

@@ -4,19 +4,9 @@ using System.Collections.Concurrent;
 using NLog;
 
 
-/// <summary>
-/// <para>Program entry class.</para>
-/// <para>Static members are thread safe, instance members are not.</para>
-/// </summary>
 public class Program {
-	/// <summary>
-	/// Logger for this class.
-	/// </summary>
 	Logger log = LogManager.GetCurrentClassLogger();
 
-	/// <summary>
-	/// Configure logging subsystem.
-	/// </summary>
 	private static void ConfigureLogging()
 	{
 		var config = new NLog.Config.LoggingConfiguration();
@@ -32,10 +22,6 @@ public class Program {
 		LogManager.Configuration = config;
 	}
 
-	/// <summary>
-	/// Program entry point.
-	/// </summary>
-	/// <param name="args">Command line arguments.</param>
 	public static void Main(string[] args)
 	{
 		ConfigureLogging();
@@ -44,10 +30,6 @@ public class Program {
 		self.Run(args);
 	}
 
-	/// <summary>
-	/// Program body.
-	/// </summary>
-	/// <param name="args">Command line arguments.</param>
 	private void Run(string[] args)
 	{
 		try
@@ -55,33 +37,25 @@ public class Program {
 			var builder = WebApplication.CreateBuilder(args);
 			var appPort = builder.Configuration.GetValue<int?>("AppPort") ?? 5001;
 
-			//set the address and port the Kestrel server should bind to
 			builder.WebHost.ConfigureKestrel(opts =>
 			{
 				opts.Listen(System.Net.IPAddress.Loopback, appPort);
 			});
 
-			//add services
 			builder.Services
 				.AddRazorPages()
 				.AddRazorOptions(opts => {
-					//this will allow having _Exception.cshtml as the root view
 					opts.ViewLocationFormats.Add("/Views/{0}.cshtml");
 				});
 
-			//build the web app
 			var app = builder.Build();
 
-			//initialize configuration helper
 			Config.CreateSingletonInstance(app.Configuration);
 
-			//add middleware to set request ID and no-cache headers
 			app.Use(async (context, next) =>
 			{
-				//set request ID to be able to correlate request descriptors
 				context.Items["HttpRequestID"] = Guid.NewGuid().ToString();
 
-				//set no-cache headers
 				context.Response.Headers.CacheControl = 
 					#pragma warning disable CA1861
 					new [] { 
@@ -91,26 +65,23 @@ public class Program {
 					#pragma warning restore CA1861
 				context.Response.Headers.Pragma = "no-cache";
 
-				//invoke next middleware in chain
 				await next();
 			});
 
-			//add request processing middleware
 			app.UseStaticFiles();
 			app.UseRouting();
 			app.UseAuthorization();
 
-			//...this is needed for correct processing of locale dependant decimal separators on server side
 			app.UseRequestLocalization(opts =>
 			{
-				opts.AddSupportedCultures(["en-US", "lt"]);
-				opts.SetDefaultCulture("en-US");
+				opts.AddSupportedCultures(["lt-LT", "en-US"]);
+				opts.AddSupportedUICultures(["lt-LT", "en-US"]);
+				opts.SetDefaultCulture("lt-LT");
 			});
 
 			app.MapDefaultControllerRoute();
 			app.MapRazorPages();
 
-			//run the web app
 			app.Run();
 		}
 		catch( Exception e )
@@ -119,4 +90,7 @@ public class Program {
 		}
 	}
 }
+
+
+
 

@@ -1,4 +1,4 @@
-namespace Lab_2_DB.Repositories;
+﻿namespace Lab_2_DB.Repositories;
 
 using Lab_2_DB.Models;
 using static Lab_2_DB.Models.LookUpLenteles;
@@ -90,3 +90,6 @@ public class KovosDuomenysRepo : RepoBase
     public static List<Renginys> ListRenginiai() => RenginysRepo.List();
     public static List<KovosTaisykles> ListKovosTaisykles() => KovosTaisyklesRepo.List();
 }
+
+
+

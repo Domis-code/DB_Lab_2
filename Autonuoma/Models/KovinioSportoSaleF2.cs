@@ -1,4 +1,4 @@
-namespace Lab_2_DB.Models;
+﻿namespace Lab_2_DB.Models;
 
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -9,3 +9,6 @@ public class KovinioSportoSaleF2
     public IList<SelectListItem> TreneriaiPasirinkimui { get; set; } = new List<SelectListItem>();
     public int? PasirinktasTrenerisId { get; set; }
 }
+
+
+
